@@ -11,12 +11,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.purple,
-        brightness: Brightness.light,
-        textTheme: const TextTheme(
-          bodyMedium: TextStyle(fontSize: 20, color: Colors.red),
-        )
-      ),
+          primarySwatch: Colors.purple,
+          brightness: Brightness.light,
+          textTheme: const TextTheme(
+            bodyMedium: TextStyle(fontSize: 20, color: Colors.red),
+          )),
       home: const HomePage(),
       debugShowCheckedModeBanner: false,
     );
@@ -28,14 +27,42 @@ class HomePage extends StatelessWidget {
   // state full widget
   @override
   Widget build(BuildContext context) {
+    final wallpapers = [
+      'images/img1.jpg',
+      'images/img2.jpg',
+      'images/img3.jpg',
+      'images/img4.jpg',
+      'images/img5.jpg',
+      'images/img6.jpg',
+      'images/img7.jpeg',
+      'images/img8.jpeg',
+    ];
+
     return Scaffold(
         appBar: AppBar(
           title: const Text(
-            'my first app',
+            'wallpaper',
           ),
           centerTitle: true,
           // backgroundColor: Colors.green,
         ),
-        body: const Text('learning flutterr'));
+        body: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) => Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: InkWell(
+              onTap: ()=>{},
+              child: Ink.image(
+                image: AssetImage(wallpapers[index]),
+                width: MediaQuery.of(context).size.width - 16,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          itemCount: wallpapers.length,
+        ));
   }
 }
+
+//Image.network('http')
+//Image.asset('images/img1.jpg');
