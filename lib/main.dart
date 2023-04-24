@@ -30,20 +30,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // state full widget
-  var technologies = [
+  final techInput = TextEditingController();
+  final technologies = [
     'React js',
     'React Native',
-    'Flutter',
-    'React js',
-    'React Native',
-    'Flutter',
-    'React js',
-    'React Native',
-    'Flutter',
-    'React js',
-    'React Native',
-    'Flutter',
     'Flutter',
     'React js',
     'React Native',
@@ -63,35 +53,33 @@ class _HomePageState extends State<HomePage> {
           centerTitle: true,
           // backgroundColor: Colors.green,
         ),
-        body: SizedBox(
-          height: 400,
-          child: ListView(
-            children: technologies.map((item) => Card(child: Text(item))).toList(),
-          ),
-        )
-        // body: SingleChildScrollView(
-        //   child: Column(
-        //     crossAxisAlignment: CrossAxisAlignment.stretch,
-        //     children: technologies.map((item) => Card(child: Text(item))).toList(),
-        //     // children: [
-        //     //   Card(
-        //     //       child: Padding(
-        //     //     padding: const EdgeInsets.all(8.0),
-        //     //     child: Text(technologies[0]),
-        //     //   )),
-        //     //   Card(
-        //     //       child: Padding(
-        //     //     padding: const EdgeInsets.all(8.0),
-        //     //     child: Text(technologies[1]),
-        //     //   )),
-        //     //   Card(
-        //     //       child: Padding(
-        //     //     padding: const EdgeInsets.all(8.0),
-        //     //     child: Text(technologies[2]),
-        //     //   )),
-        //     // ],
-        //   ),
-        // )
-      );
+        body: Column(
+          children: [
+            TextField(
+              controller: techInput,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    technologies.add(techInput.text);
+                  });
+                },
+                child: const Text('Add')),
+            Expanded(
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  // call item count lenth times, for every item in the list
+                  return Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(technologies[index]),
+                    ),
+                  );
+                },
+                itemCount: technologies.length,
+              ),
+            ),
+          ],
+        ));
   }
 }
