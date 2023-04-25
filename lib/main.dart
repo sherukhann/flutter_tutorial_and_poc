@@ -86,18 +86,21 @@ class _HomePageState extends State<HomePage> {
       ..addJavaScriptChannel(
         'Toaster',
         onMessageReceived: (JavaScriptMessage message) {
-          // IN FE SIDE: window?.Toaster?.postMessage("HIII i toastt");
+          // IN FE SIDE: window?.Toaster?.postMessage("Toaster message");
           debugPrint('toaster message to ${message.message}');
-          // ScaffoldMessenger.of(context).showSnackBar(
-          //   SnackBar(content: Text(message.message)),
-          // );
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(message.message)),
+          );
         },
       )
       ..addJavaScriptChannel(
-        'SK',
+        'OpenUrl',
         onMessageReceived: (JavaScriptMessage message) {
-          // IN FE SIDE: window?.SK?.postMessage("HIII skkkk");
+          // IN FE SIDE: window?.OpenUrl?.postMessage("HIII skkkk");
           debugPrint('toaster message to ${message.message}');
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(message.message)),
+          );
         },
       )
       ..loadRequest(Uri.parse(
