@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'home_page.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -11,11 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.purple,
-        brightness: Brightness.light,
-        textTheme: const TextTheme(
-          bodyMedium: TextStyle(fontSize: 20, color: Colors.red),
-        )
+        primarySwatch: Colors.blue,
       ),
       home: const HomePage(),
       debugShowCheckedModeBanner: false,
@@ -23,19 +19,3 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-  // state full widget
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'my first app',
-          ),
-          centerTitle: true,
-          // backgroundColor: Colors.green,
-        ),
-        body: const Text('learning flutterr'));
-  }
-}
