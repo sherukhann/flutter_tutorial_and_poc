@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import './native_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -66,7 +67,11 @@ class _HomePageState extends State<HomePage> {
               ElevatedButton(
                   onPressed: getBatteryLevel,
                   child: const Text('Get Battery Level')),
-              Text(batteryLevel)
+              Text(batteryLevel),
+              const SizedBox(
+                height: 60,
+                child: NativeView()
+              ),
             ],
           ),
         ));
