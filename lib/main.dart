@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,17 +26,28 @@ class MyApp extends StatelessWidget {
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
+  static const platform = MethodChannel('myapp/initHaptic');
   // state full widget
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: const Text(
-            'my first app',
+            'help centre',
           ),
           centerTitle: true,
           // backgroundColor: Colors.green,
         ),
-        body: const Text('learning flutterr'));
+        body: Column(
+          children: [
+            ElevatedButton(onPressed: () async {
+              try {
+                await platform.invokeMethod('initHelpCentre');
+              } on PlatformException catch (e) {
+                debugPrint('${e.message}');
+              }
+            }, child: const Text('Init Help Centre'))
+          ],
+        ));
   }
 }
