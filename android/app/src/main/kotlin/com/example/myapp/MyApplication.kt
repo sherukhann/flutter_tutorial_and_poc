@@ -11,17 +11,17 @@ class MyApplication : FlutterApplication() {
         val initData = InitData().apply {
             primaryColor = "#420420"
             composerPlaceholder = "Type message...."
-            noHeader = true
+            noHeader = false
             initializeLanguage = "en"
         }
         HaptikSDK.init(applicationContext, initData)
 //        HaptikSDK.loadGuestConversation()
     }
-
+    //HaptikSDK.logout(context)
     companion object {
 
         fun launchGuestConversation() {
-            println("called init funciton");
+            println("called init function");
             HaptikSDK.setLaunchMessage("Your Message", true, true)
             HaptikSDK.loadGuestConversation();
         }
@@ -31,7 +31,9 @@ class MyApplication : FlutterApplication() {
                 authId = "2028399250"
                 signupType = "third_party"
                 customData = JSONObject().apply {
-                    put("premiumId", "2028399250")
+                    put("email", "test@email.com")
+                    put("mobile_no", "9898989898")
+                    put("username", "User Name")
                 }
             }
             HaptikSDK.loadConversation(signupData)
