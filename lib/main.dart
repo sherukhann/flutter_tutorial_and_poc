@@ -1,7 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'provider/count_provider.dart';
+import 'screens/counter.dart';
+
+import 'home_screen.dart';
 
 void main() {
   runApp(const MyApp());
+  // runApp(
+  //   MultiProvider(
+  //   providers: [
+  //     ChangeNotifierProvider(create: (_) => CountProvider()),
+  //   ],
+  //   child: const MyApp(),
+  // ),
+  // )
 }
 
 class MyApp extends StatelessWidget {
@@ -9,33 +22,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
-        brightness: Brightness.light,
-        textTheme: const TextTheme(
-          bodyMedium: TextStyle(fontSize: 20, color: Colors.red),
-        )
+    return ChangeNotifierProvider(
+      create: (_) => CountProvider(),
+      child: MaterialApp(
+        theme: ThemeData(
+            primarySwatch: Colors.purple,
+            brightness: Brightness.light,
+            textTheme: const TextTheme(
+              bodyMedium: TextStyle(fontSize: 20, color: Colors.red),
+            )),
+        home: const Counter(),
+        debugShowCheckedModeBanner: false,
       ),
-      home: const HomePage(),
-      debugShowCheckedModeBanner: false,
     );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-  // state full widget
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'my first app',
-          ),
-          centerTitle: true,
-          // backgroundColor: Colors.green,
-        ),
-        body: const Text('learning flutterr'));
   }
 }
