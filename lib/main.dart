@@ -1,3 +1,4 @@
+import 'package:byjus_ui_core/components/byjus_image.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -36,6 +37,15 @@ class HomePage extends StatelessWidget {
           centerTitle: true,
           // backgroundColor: Colors.green,
         ),
-        body: const Text('learning flutterr'));
+        body: ByjusNetworkImage(
+          "https://static.tllms.com/android/btlav3-new/staging/assets/images/default/calendar/event/completed.svg",
+          placeholderBuilder: (context) {
+            return Container(
+              color: Colors.blue,
+              child: const Text('Error Image'),
+            );
+          },
+        ),
+    );
   }
 }
