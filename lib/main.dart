@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+
 // Import for Android features.
 import 'package:webview_flutter_android/webview_flutter_android.dart';
+
 // Import for iOS features.
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
@@ -21,8 +23,33 @@ class MyApp extends StatelessWidget {
           textTheme: const TextTheme(
             bodyMedium: TextStyle(fontSize: 20, color: Colors.red),
           )),
-      home: const HomePage(),
+      home: const Dummy(),
       debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+class Dummy extends StatelessWidget {
+  const Dummy({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('home'),
+      ),
+      body: TextButton(
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return const HomePage();
+              },
+            ),
+          );
+        },
+        child: const Text('go to onboarding module'),
+      ),
     );
   }
 }
@@ -104,7 +131,7 @@ class _HomePageState extends State<HomePage> {
         },
       )
       ..loadRequest(Uri.parse(
-          'http://localhost:3000/home?onboarding-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6ImFVbGFUMjltTlRSd2MzcHBhalZKZVVaWmJ6UlhUbTV6VmtZPSIsInN1YiI6IlUyRnNkR1ZrWDErS3ZmVnNrZWZSS1hkN09VNjVpMjdnd1YrcTJlOUtLSmJIaWxOYUMzdXlBWnFmUXpSemdoTEpKeDg0SGhVSEtwVjBGeXVSYVczbElCS1hyQ011eVNNWGJsRmg0MmtReUFZL01hNEE2OTA0Sk4rd2lrMXlIeVF6ZXFlYXh0eENMM3REb2tIa0dHVXVvSjBVZDEzRVVxN29ITWVUazhvZ3JsK2ozbTVSQWhPdVVvZlp0Q1o5cE1ZVGNsVDc3SGduWDJtUmd2RFh1NytXMGpBVVdTbWx0M09zYmw2aDFEanFGeGN1T2FYZEYrbld5MVkvbHlFR3JybkRqVVZycFVZK3doa1RZTXJ5c0dYcm5CcWhMaEJKWVZDcTNsNVkxeUoxRE81WWhkc0hCa3k0Z1kvcTUyaVo3eDU5cHgyZnBOOU5TZHFsVkJxdkJ0TlJMT0RKUUpkdjRnd243dkZCRit1azhiVjFzbDQ3Q09ia1pmK3FKTnlIbHQ2bEJEcVJ2WlUrNmY1UEtMbjJ2cHV2Z2FyckVxTzhwTWZtQ2J3b0Y3cjdlSHNqcENqakx3Qzk1MnZYYUFvMENONXoyeEhGL05UbGRZWWZWMklMQ0JXYlNUYTF4WHU4Nk9tUVF4OXl4cDhIT2ZuVTFLYnkweUVFWTRSUGNEbWlaZEJtS3dJVGVxOXNjTDlHeWRFNnZtZ2tkeVFBNzZmRTdrNnVwRWZOZnZhZG5EamVKYmN3empFbUw0WXpBMXc5VkI0UlhYVklWL3cwd0x2V0tBaTk2MllXamdwSlNaR21NZzgxSC9XVTFiM2FyWU9uWUNieGZ0eWhYTVh2YkFzNXZoMW1vWSthQ3FDUS8wNEpDRHNML0xCS09ueXpCOVU0UHNsaG10NmwxUkI1dmNJclByVVpNZHRGNzZFT1BXVCtFM1FxYnNRdXkwaGYrNCs5RWl4b09DUlFtUmtoMjFuODg3ZlhYWFVYVDdMRTNRZFFxK2wwWjNHWFJYakNEU0hFb2lzdDc0blQ4cVZJTXE0dXY1MitrWjgvQ1V3dEk0ckNmZm8zM3JFWnpDVzFZOElwcEM1WjduSURMeSszaFh3NFRaTVNldExSZi9mRG1JK2ROM2FkS1p1dXBLcVhHaEhlZkhiSkFDSDdEMDBVNGdDQjF2ampMZXNlYmx5aDRaRkljd1Iwc3ZKYTFDaDQ3bE8vblB6RTVqSjZLaWJ4NTZkWEtMZkF4UEloUXFrRUt2TE5QNzlySzZPbTFQK0pwYzVjR3M4SCIsImlhdCI6MTY4MjQyMzM5MTAzOSwiZXhwIjoxNjgzNzE5MzkxLCJ0eXBlIjoiYWNjZXNzIn0.xoIOQuNLGBhWZJIeaKXvQMjbQeNtUmGDxi5oQ6KMyRg&premium_id=1230914681&grade_name=Standard%20VIII&platform=learn_portal&device_type=Desktop'));
+          'https://student-onboarding-devtest.byjus.com/home?onboarding-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6ImFVbGFUMjltTlRSd2MzcHBhalZKZVVaWmJ6UlhUbTV6VmtZPSIsInN1YiI6IlUyRnNkR1ZrWDEvYmZkUlNCTFRXUjBzZ1Bmdm1hYks5cG1vRks5VjNFUlVVOC9HK245cDJBdXY2ZmRYSmtJeHE0TWpQazhKenUyWm9VcW1PQ2ZxelB6QTdlNmNsM2E1bUwydnNmRFFaQmltNC9uOXA1OXJMdFpQOTlhZmZ1SGEzNjRHOXorNzV5VGQvaXV2cnBndkQzRGJqUnJ5MlVUK1haWHRhSDRTbVJkSTh3QjZBWHNjRlJPQS9FcW5yV1g2OUF1WnVmM3lUeUpWQWlvN3hVMGVCWWxJZDRBcTVXNmxjdlp4ekV3RlJIWnJJRVdEaGRMZFZUbVEyK3JxaTdvMmJ1ZDNKN3VPNkFpWlFvcVcvcC90ckpZRlMvdHhCVnMvZ29IdXI4bVh1QTlRTm11ZE9FcXZsV1QzQVN4RnV6czVwYXRDWkwzNFFiSjJhNnRpRjBIdVJ0ZnVKcWI1blVndytCaXBvcDNyUmNWRC85M1A2c2Z4SDd3UGZrbjFHckp0Q3pyc3lQRWpwVjA2SjhDTGdFOTdwenRXOXg0Nzc5Q3J4THZPV2psNzZsNHBkbWwvaHEzZHdxb2pScDNmemsxMkw2Wm5sVGZhNzZtNUhKSWpPdGhEcGZTaXhHbHdlTkQ2azhPK056MklxWFhRUGtjc3RWTnE4UlRKcGtBSElZeWZvNmZhVmVTQWVJb09KWTVZU2xkaU1peXlSUk9EdWdJWG5uT3Z5b0ZOeUw5Ynp0VmJvdVlsZGFFZnZjb1h4Mmo3djFzZmZaT3pWVDRUVUhjMk9INjM3aHlBQUpTckFGL3prSWE1YW1OaXp3a2pYdWhoY01CVXpKK2lHOFY5blZ0QnpHSlFWZnpEQXVlQkc1TnBiMCtwSy9wbU9QRmpFai9UejVLcW1iS2xYZmZPSWJ3bUkrcVBhd0R6RmQ4UEpEbFpCSFJzS1VjK2QzYmY5M0RJLzNTa0d1WkdrSVdQSWl3a01DYWdlNVRaVS8wQ21wWCtvRmdzZHRuWDliU1dPdWtMdHR4T2NpdnBFaG1mNmdJcVg2SkFEenZwcDl1bEd5VkVucEtibnp2bEdNUGc2ZGxPZmVoTElUVmFWY0JKTVhlaW03R0s1cjFFanJvWjN1emlXNG1DVEhaSTB3VFV3bWloLzlIak9SU3pyQ0NBZ1JkL2ZEV2FXaEM3d20wSmFJaStiZ0pHdHY0UHNZVFQ4cGFzeEl6T0FPczlUdi9CMTR3dHU1dko5NGlzK1B0c1hVUzdRRnlqUnEvY0RBVkxZODhVciIsImlhdCI6MTY4Mzc4OTgyODI0OCwiZXhwIjoxNjg1MDg1ODI4LCJ0eXBlIjoiYWNjZXNzIn0.0dUxFlM1Midz5o0-5L3RYia4csP11UAW4Q7gXJaVAJo&premium_id=1230914681&grade_name=Standard%20VIII&platform=learn_portal&device_type=Desktop'));
 
     if (controller.platform is AndroidWebViewController) {
       AndroidWebViewController.enableDebugging(true);
