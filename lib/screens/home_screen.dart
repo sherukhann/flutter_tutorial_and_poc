@@ -1,6 +1,7 @@
 import 'package:byjus_ui_core/components/byjus_image.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/screens/product_screen.dart';
+import 'package:myapp/screens/users_screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -19,7 +20,7 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            TextButton(
+            ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
@@ -30,8 +31,9 @@ class HomePage extends StatelessWidget {
                   ),
                 );
               },
-              child: const Text('get products'),
+              child: const Text('Get Products'),
             ),
+
             ByjusNetworkImage(
               "https://static.tllms.com/android/btlav3-new/staging/assets/images/default/calendar/event/completed.svg",
               placeholderBuilder: (context) {
@@ -40,6 +42,19 @@ class HomePage extends StatelessWidget {
                   child: const Text('Error Image'),
                 );
               },
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const UsersPage();
+                    },
+                  ),
+                );
+              },
+              child: const Text('Get Users'),
             ),
           ],
         ),
