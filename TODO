@@ -1,0 +1,5 @@
+1. connect to android app
+2. to IOS
+3. to web app
+4. firebase.initialize -> android and ios
+5. firebase.initialiseapp(options: {})
